@@ -115,7 +115,7 @@ reg     signed      [7:0]   data;
 wire    signed      [7:0]   dataOut;
 wire    rdy;
 
-localparam DECIMAL_POINT = 4;
+localparam DECIMAL_POINT = 6;
 localparam WIDTH = 8;
 
 hardtanh_sign#(.WIDTH(WIDTH),.DECIMAL_POINT(DECIMAL_POINT)) test1(
@@ -169,7 +169,7 @@ module tb_sigmoid_sign(
     
     
     localparam WIDTH = 8;
-    localparam DECIMAL_POINT = 4;
+    localparam DECIMAL_POINT = 6;
     
     sigmoid_sign#(.WIDTH(WIDTH),.DECIMAL_POINT(DECIMAL_POINT))    tb_0(
     .iClk(clk),
