@@ -135,7 +135,7 @@ endmodule
 
 
 // signed
-module hardtanh_sign#(parameter WIDTH = 8,DECIMAL_POINT = 4)(
+module hardtanh_sign#(parameter WIDTH = 8,DECIMAL_POINT = 6)(
     iClk,
     iRst,
     
@@ -221,7 +221,7 @@ endmodule
 
 
 // unsigned code should use the 2's complement
-module sigmoid_sign#(parameter WIDTH = 8, DECIMAL_POINT = 4)(
+module sigmoid_sign#(parameter WIDTH = 8, DECIMAL_POINT = 5)(
     iClk,
     iRst,
     
@@ -235,9 +235,9 @@ module sigmoid_sign#(parameter WIDTH = 8, DECIMAL_POINT = 4)(
     );
 
 // parameter
-localparam               [WIDTH-DECIMAL_POINT-2:0]   INTEGERZERO     =   0;        
-localparam               [WIDTH-DECIMAL_POINT-2:0]   INTEGERONE      =   0;        
-localparam               [DECIMAL_POINT-1:0]         FRACTIONZERO    =   0;  
+localparam               [WIDTH-DECIMAL_POINT-1:0]   INTEGERZERO     =   0;        
+//localparam               [WIDTH-DECIMAL_POINT-2:0]   INTEGERONE      =   0;        
+//localparam               [DECIMAL_POINT-1:0]         FRACTIONZERO    =   0;  
 localparam     signed    [WIDTH-1:0]                 One             =   2'sb01 <<< DECIMAL_POINT;
 
       
@@ -250,19 +250,19 @@ output  wire                                    rdy;
 output  wire        signed      [WIDTH-1:0]     dataOut;
 
 // internal variable
-        
         reg                                                ready;
-        wire        signed      [WIDTH-1-DECIMAL_POINT:0]  integerPartIn           =   {data[WIDTH-1:DECIMAL_POINT]}; 
-        wire        signed      [WIDTH-1-DECIMAL_POINT:0]  integerPartABS          =    data[WIDTH-1]==1?  ~integerPartIn + 1 : integerPartIn;
+        wire        signed      [WIDTH-1:0]                dataABS                  =   data[WIDTH-1]==1? ~data + 1 : data;
+        wire        signed      [WIDTH-1-DECIMAL_POINT:0]  integerPartABS           =   dataABS[WIDTH-1:DECIMAL_POINT];
         
-        wire        signed      [DECIMAL_POINT:0]          fractionPart            =   {data[WIDTH-1],data[DECIMAL_POINT-1:0]};
-        wire        signed      [DECIMAL_POINT:0]          fractionPartABS         =   data[WIDTH-1]==1?  ~fractionPart + 1 : fractionPart;
-        wire        signed      [DECIMAL_POINT:0]          fractionPartABSDiv4     =   fractionPartABS >>> 4;
+        wire        signed      [DECIMAL_POINT-1:0]        fractionPartABS          =   dataABS[DECIMAL_POINT-1:0];
+        wire        signed      [DECIMAL_POINT-1:0]        fractionPartABSDiv4      =   fractionPartABS >> 2;
+        wire        signed      [WIDTH-1:0]                OneShift                 =   One >>> 1;
+        wire        signed      [WIDTH-1:0]                fractionPartABSDiv4Scale =   {INTEGERZERO,fractionPartABSDiv4};
+        wire        signed      [WIDTH-1:0]                numerator                =   OneShift - fractionPartABSDiv4Scale;
         reg         signed      [WIDTH-1:0]                dataInner;  
 
 assign  rdy             =   ready;
 assign  dataOut         =   data[WIDTH-1]==1? dataInner:One-dataInner;
-
 
 always@*
 begin
@@ -275,7 +275,7 @@ begin
         end
         else
         begin
-            dataInner <=  (One>>>2 - fractionPartABSDiv4) >>>  integerPartABS;
+            dataInner <=  numerator >>  integerPartABS;
             ready     <=  1;
         end 
     end
