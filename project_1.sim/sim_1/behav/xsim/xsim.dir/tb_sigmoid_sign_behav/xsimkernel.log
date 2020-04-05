@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_sigmoid_sign_behav/xsimk -simmode gui -wdb tb_sigmoid_sign_behav.wdb -simrunnum 0 -socket 50719
-Design successfully loaded
-Design Loading Memory Usage: 46044 KB (Peak: 46164 KB)
-Design Loading CPU Usage: 10 ms
-Simulation completed
-Simulation Memory Usage: 128040 KB (Peak: 185312 KB)
-Simulation CPU Usage: 10 ms
