@@ -99,7 +99,7 @@ module adder_tree#(parameter NUM = 300, LEN = 16, LEVEL = $clog2(NUM) ) (
         
     for (index_num = 0; index_num < NUM_ADDER_LEVEL0-IS_ODD_NUM_INPUT_LEVEL0; index_num = index_num + 1)
     begin
-        adder#(.LEN(LEN)) level0(.a(wire_inner[START_LEVEL0+2*index_num]),.b(wire_inner[START_LEVEL0+2*index_num+1]),.out(wire_inner[START_LEVEL1+index_num]));
+        adder#(.LEN(LEN)) level0(.a(wire_inner[START_LEVEL0 + 2*index_num]),.b(wire_inner[START_LEVEL0+2*index_num+1]),.out(wire_inner[START_LEVEL1+index_num]));
     end
     if(IS_ODD_NUM_INPUT_LEVEL0 && (NUM_ADDER_LEVEL0>0))
         adder#(.LEN(LEN)) level0_last(.a(wire_inner[START_LEVEL0+2*(NUM_ADDER_LEVEL0-1)]),.b(0),.out(wire_inner[START_LEVEL1+NUM_ADDER_LEVEL0 - 1]));

@@ -43,7 +43,7 @@ module softmax#(parameter NUM = 18, LEN = 16)(
     generate
     for (i = 0;i < NUM ; i = i +1)
     begin
-    exp_iteration_add_16bit_angle#(.LEN(LEN)) exp0(
+    exp_iteration_2bit_int_angle_16bit#(.LEN(LEN)) exp0(
         .angle(sub1[i]),
         .exp(exp1[i])
     );
