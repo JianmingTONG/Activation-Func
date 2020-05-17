@@ -105,18 +105,21 @@ always # 5 clk = ~ clk;
     
 endmodule
 
+
+
 module tb_hardtanh(
 
     );
+localparam DECIMAL_POINT = 14;
+localparam WIDTH = 16;
 reg             clk;
 reg             rst;
 reg             enable;
-reg     signed      [7:0]   data;
-wire    signed      [7:0]   dataOut;
+reg     signed      [WIDTH-1:0]   data;
+wire    signed      [WIDTH-1:0]   dataOut;
 wire    rdy;
 
-localparam DECIMAL_POINT = 6;
-localparam WIDTH = 8;
+
 
 hardtanh_sign#(.WIDTH(WIDTH),.DECIMAL_POINT(DECIMAL_POINT)) test1(
     .iClk(clk),
@@ -143,19 +146,20 @@ begin
     data = -128;
 end
 
-localparam NUM = 8'b11111111;
+localparam NUM = 16'b11111111_11111111;
 always 
 begin
     @(posedge clk)
     for(i = 0; i < NUM; i = i + 1)
     begin  
-        data = data - 8'sb00000001; 
+        data = data - 16'sb00000000_00000001; 
     end
 end
 
 always #5 clk=~clk;
 endmodule
  
+    
     
 module tb_sigmoid_sign(
     );

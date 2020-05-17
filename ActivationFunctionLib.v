@@ -153,8 +153,8 @@ module hardtanh_sign#(parameter WIDTH = 8,DECIMAL_POINT = 6)(
 // if decimal point  = 1, value 4'sb0001 = 2
 
 //parameter           WIDTH                   =   8;
-localparam   signed  [7:0]     THRESHOLD      =   2'sb01 <<< DECIMAL_POINT;   // stands for 1
-localparam   signed  [7:0]     NEGATHRESHOLD  =   2'sb11 <<< DECIMAL_POINT;   // stands for -1
+localparam   signed  [WIDTH-1:0]     THRESHOLD      =   2'sb01 <<< DECIMAL_POINT;   // stands for 1
+localparam   signed  [WIDTH-1:0]     NEGATHRESHOLD  =   2'sb11 <<< DECIMAL_POINT;   // stands for -1
 // inout data
 input   wire                                    iClk;
 input   wire                                    iRst;
