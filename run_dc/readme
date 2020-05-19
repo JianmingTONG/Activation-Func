@@ -1,0 +1,6 @@
+all the scripts should be run under the XJTU-CAG-202.117.56.253 server
+step1: copy all the files of this directory to the parent directory of Activation-Func, for example the parent_directory in the path "./parent_directory/Activation-Func/" 
+step2: run the setup_env.sh to configure the environment variable
+step3: run "python3 run_dc.py" in terminal to run synopsys design compiler
+step4: run parser.py to get the finial result report. The result report is file "Activation_Function_report.rpt"
+

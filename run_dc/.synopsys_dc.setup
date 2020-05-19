@@ -1,0 +1,62 @@
+
+# =====
+# Variables
+# =====
+set ASIC_SYN_LIB $env(ASIC_SYN_LIB);
+set ASIC_SYN_CCS_LIB $env(ASIC_SYN_CCS_LIB);
+set ASIC_SYN_PAD_LIB $env(ASIC_SYN_PAD_LIB);
+set ASIC_SYN_MPHY_LIB $env(ASIC_SYN_MPHY_LIB);
+set MEM_SYN_LIB $env(MEM_SYN_LIB);
+set PRJ_HOME $env(PRJ_HOME);
+set PRJ_NAME $env(PRJ_NAME);
+
+set ADDITIONAL_SEARCH_PATH " \
+  ./db \
+  $ASIC_SYN_CCS_LIB/tcbn28hpcplusbwp12t30p140_180a \
+  $ASIC_SYN_PAD_LIB/tphn28hpcpgv18_170a \
+  $ASIC_SYN_MPHY_LIB/dwc_ddr4_multiphy_tsmc28hpcp18/3.31a/sstl/fb_1.34a/timing/lib/ddr3_34_60 \
+  $ASIC_SYN_MPHY_LIB/dwc_ddr4_multiphy_tsmc28hpcp18/3.31a/datx8/fb_2.60a/timing/lib \
+  $ASIC_SYN_MPHY_LIB/dwc_ddr4_multiphy_tsmc28hpcp18/3.31a/pll/fb_2.20a/timing/lib \
+  $ASIC_SYN_MPHY_LIB/dwc_ddr4_multiphy_tsmc28hpcp18/3.31a/ac/fb_2.60a/timing/lib \
+  $ASIC_SYN_LIB/tcbn28hpcplusbwp12t30p140_180a \
+"
+
+# Set search path
+set_app_var search_path "$search_path $PRJ_HOME/rtl/inc \
+ $PRJ_HOME/rtl/src/mcu/vscale/inc  \
+ $PRJ_HOME/rtl/src/perips \
+ $ADDITIONAL_SEARCH_PATH"
+
+# Setup liraries
+set_app_var target_library {tcbn28hpcplusbwp12t30p140tt1v25c.db}
+
+set_app_var synthetic_library {dw_foundation.sldb}
+
+set additional_library [list \
+    ts1n28hpcpuhdsvtb1024x32m4sw_ssg0p81vm40c.db \
+    ts1n28hpcpuhdsvtb2048x32m4sw_ssg0p81vm40c.db \
+    ts1n28hpcpuhdsvtb512x128m4sw_ssg0p81vm40c.db \
+    ts1n28hpcpuhdsvtb512x64m4sw_ssg0p81vm40c.db \
+    ts1n28hpcpuhdsvtb512x8m4sw_ssg0p81vm40c.db \
+    ts6n28hpcpsvta32x52m4fw_ssg0p81vm40c.db \
+    ts6n28hpcpsvta64x32m8fw_ssg0p81vm40c.db \
+    ts6n28hpcpsvta64x64m4fw_ssg0p81vm40c.db \
+    tsdn28hpcpa256x32m8mw_ssg0p81vm40c.db \
+    tsdn28hpcpa256x64m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpa512x64m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb128x19m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb256x128m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb256x64m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb512x64m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb64x20m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb64x32m4mw_ssg0p81vm40c.db \
+    tsdn28hpcpuhdb64x64m4mw_ssg0p81vm40c.db \
+]
+
+set_app_var link_library [list * $target_library $synthetic_library $additional_library]
+
+set_app_var symbol_library "sc.sdb"
+
+# Define work library location
+define_design_lib WORK -path "./work"
+

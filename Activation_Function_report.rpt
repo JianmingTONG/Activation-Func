@@ -1,0 +1,180 @@
+relu2_1
+area =     2.688000
+power =  2.1065e-05 mW
+timing =  49.87
+
+relu3_1
+area =     3.360000
+power =  2.6842e-05 mW
+timing =  49.87
+
+relu4_1
+area =     4.032000
+power =  3.2674e-05 mW
+timing =  49.87
+
+relu5_1
+area =     4.704000
+power =  3.8595e-05 mW
+timing =  49.86
+
+relu6_2
+area =     5.376000
+power =  4.4381e-05 mW
+timing =  49.86
+
+relu7_2
+area =     6.048000
+power =  5.0254e-05 mW
+timing =  49.86
+
+relu8_2
+area =     6.720000
+power =  5.5524e-05 mW
+timing =  49.85
+
+relu16_2
+area =    12.096000
+power =  1.0264e-04 mW
+timing =  49.83
+
+relu32_2
+area =    22.680000
+power =  1.9601e-04 mW
+timing =  49.82
+
+leakyrelu2_1
+area =     2.688000
+power =  3.0772e-05 mW
+timing =  49.86
+
+leakyrelu3_1
+area =     3.528000
+power =  4.1675e-05 mW
+timing =  49.86
+
+leakyrelu4_1
+area =     4.368000
+power =  5.3031e-05 mW
+timing =  49.86
+
+leakyrelu5_1
+area =     5.208000
+power =  6.3835e-05 mW
+timing =  49.85
+
+leakyrelu6_2
+area =     6.048000
+power =  7.4663e-05 mW
+timing =  49.85
+
+leakyrelu7_2
+area =     7.392000
+power =  6.4792e-05 mW
+timing =  49.84
+
+leakyrelu8_2
+area =     9.240000
+power =  8.9808e-05 mW
+timing =  49.83
+
+leakyrelu16_2
+area =    16.464000
+power =  1.5317e-04 mW
+timing =  49.84
+
+leakyrelu32_2
+area =    35.616000
+power =  2.8186e-04 mW
+timing =  49.80
+
+sigmoid2_1
+area =     1.512000
+power =  1.5259e-05 mW
+timing =  49.87
+
+sigmoid3_1
+area =     3.024000
+power =  2.1209e-05 mW
+timing =  49.88
+
+sigmoid4_1
+area =     7.896000
+power =  8.1700e-05 mW
+timing =  49.85
+
+sigmoid5_1
+area =    35.112000
+power =  4.2503e-04 mW
+timing =  49.69
+
+sigmoid6_2
+area =    39.480000
+power =  4.7604e-04 mW
+timing =  49.69
+
+sigmoid7_2
+area =    50.400000
+power =  6.0920e-04 mW
+timing =  49.65
+
+sigmoid8_2
+area =    61.656000
+power =  7.4379e-04 mW
+timing =  49.61
+
+sigmoid16_2
+area =   152.207999
+power =  1.7940e-03 mW
+timing =  49.32
+
+sigmoid32_2
+area =   367.080000
+power =  4.7377e-03 mW
+timing =                 48.89
+
+hardtanh2_1
+area =     1.344000
+power =  1.0002e-05 mW
+timing =  49.89
+
+hardtanh3_1
+area =     1.680000
+power =  1.2532e-05 mW
+timing =  49.89
+
+hardtanh4_1
+area =     2.016000
+power =  1.5063e-05 mW
+timing =  49.89
+
+hardtanh5_1
+area =     7.224000
+power =  5.1037e-05 mW
+timing =  49.84
+
+hardtanh6_2
+area =     8.064000
+power =  6.1675e-05 mW
+timing =  49.84
+
+hardtanh7_2
+area =     9.408000
+power =  6.4848e-05 mW
+timing =  49.83
+
+hardtanh8_2
+area =    10.080000
+power =  7.4846e-05 mW
+timing =  49.83
+
+hardtanh16_2
+area =    18.984000
+power =  1.1117e-04 mW
+timing =  49.79
+
+hardtanh32_2
+area =    35.279999
+power =  2.2471e-04 mW
+timing =  49.76
+
